@@ -1,9 +1,8 @@
-## Laboratorijske vezbe **MOSIS**
----
-## Naizv tima - **DSoft**
----
+## Laboratorijske vežbe **MOSIS**
 
-### Clanovi tima:
+## Naziv tima - **DSoft**
+
+### Članovi tima:
 - Dušan Antić *17004*
 - Stefan Dobrosavljević *17073*
 

@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         val finishButton: Button = findViewById(R.id.finish_button);
         finishButton.setOnClickListener {
             Toast.makeText(this, "Kliknuo si na kraj!", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

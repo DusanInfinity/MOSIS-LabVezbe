@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Hello World</string>
+    <string name="app_name">Igraj se sa zivotnim ciklusom!</string>
+    <string name="finish_button">Kraj!</string>
 </resources>

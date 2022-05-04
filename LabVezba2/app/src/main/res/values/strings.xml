@@ -14,4 +14,11 @@
     <string name="new_place">New Place</string>
     <string name="my_place_list">My Place</string>
     <string name="about">About</string>
+
+    <string name="about_text">
+        <i>My Place</i> is an application that will help you remember characteristics and location of your favorite places.
+        It will be able to show your places on the map and enable you to share them with your friends.
+        Each week this application will be better and better and you will earn <i>points</i> from the teaching assistant.
+    </string>
+    <string name="ok">Ok</string>
 </resources>

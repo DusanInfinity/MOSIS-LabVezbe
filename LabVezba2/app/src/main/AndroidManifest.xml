@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPlaces">
         <activity
+            android:name=".MyPlacesList"
+            android:exported="false"
+            android:label="@string/title_activity_my_places_list"
+            android:parentActivityName="elfak.mosis.myplaces.MyPlacesList"
+            android:theme="@style/Theme.MyPlaces.NoActionBar" />
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="elfak.mosis.myplaces.MainActivity" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
@@ -20,10 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".About"
+        <activity
+            android:name=".About"
             android:label="About"
-            android:theme="@style/Theme.AppCompat.Light.Dialog">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
     </application>
 
 </manifest>

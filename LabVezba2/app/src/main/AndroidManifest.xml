@@ -13,11 +13,12 @@
             android:name=".MyPlacesList"
             android:exported="false"
             android:label="@string/title_activity_my_places_list"
-            android:parentActivityName="elfak.mosis.myplaces.MyPlacesList"
-            android:theme="@style/Theme.MyPlaces.NoActionBar" />
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="elfak.mosis.myplaces.MainActivity" />
+            android:parentActivityName="elfak.mosis.myplaces.MainActivity"
+            android:theme="@style/Theme.MyPlaces.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="elfak.mosis.myplaces.MainActivity" />
+        </activity>
 
         <activity
             android:name=".MainActivity"

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="elfak.mosis.myplaces">
 
-    <!-- Kada stavimo MyListActivity kod parentActivityName ne "rekreira" se pocetni ekran-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,9 +14,9 @@
             android:name=".MyPlacesList"
             android:exported="false"
             android:label="@string/title_activity_my_places_list"
-
-            android:parentActivityName="elfak.mosis.myplaces.MainActivity"
-            android:theme="@style/Theme.MyPlaces.NoActionBar">
+            android:theme="@style/Theme.MyPlaces.NoActionBar"
+            android:parentActivityName="elfak.mosis.myplaces.MainActivity">
+            <!-- Kada stavimo MyListActivity kod parentActivityName ne "rekreira" se pocetni ekran-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="elfak.mosis.myplaces.MainActivity" />

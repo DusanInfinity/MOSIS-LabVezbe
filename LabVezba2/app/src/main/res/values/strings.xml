@@ -22,4 +22,12 @@
     </string>
     <string name="about_button">Ok</string>
     <string name="title_activity_my_places_list">MyPlacesList</string>
+
+    <!-- Drugi nacin za popunjavanje staticke liste -->
+    <string-array name="my_places_list_entries">
+        <item>Tvrdjava</item>
+        <item>Cair</item>
+        <item>Park Svetog Save</item>
+        <item>Trg Kralja Milana</item>
+    </string-array>
 </resources>

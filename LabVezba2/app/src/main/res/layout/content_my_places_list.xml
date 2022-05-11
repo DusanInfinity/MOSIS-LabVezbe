@@ -9,5 +9,7 @@
     <ListView
         android:id="@+id/my_places_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:entries="@array/my_places_list_entries">
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

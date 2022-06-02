@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -32,6 +33,7 @@ class EditFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         return when (item.itemId) {
             R.id.action_my_places_list -> {
                 this.findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
@@ -39,6 +41,7 @@ class EditFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {

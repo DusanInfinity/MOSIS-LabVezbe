@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
                 true
             }
             R.id.action_new_place -> {
-                this.findNavController().navigate(R.id.action_Home_Fragment_to_EditFragment)
+                this.findNavController().navigate(R.id.action_HomeFragment_to_EditFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

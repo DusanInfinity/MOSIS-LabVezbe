@@ -4,7 +4,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="home_fragment_label">Home</string>
     <string name="list_fragment_label">My Places</string>
-    <string name="edit_fragment_label">Edit</string>
+    <string name="edit_fragment_label">Edit My Place</string>
+    <string name="view_fragment_label">View My Place</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -24,17 +25,13 @@
     <string name="about_button">Ok</string>
     <string name="title_activity_my_places_list">MyPlacesList</string>
 
-    <!-- Drugi nacin za popunjavanje staticke liste -->
-    <string-array name="my_places_list_entries">
-        <item>Tvrdjava</item>
-        <item>Cair</item>
-        <item>Park Svetog Save</item>
-        <item>Trg Kralja Milana</item>
-    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="edditmyplace_name">Name:</string>
     <string name="edditmyplace_desc">Description</string>
     <string name="editmyplace_add_label">Add</string>
     <string name="editmyplace_cancel_label">Cancel</string>
+    <string name="editmyplace_save_label">Save</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="viewmyplace_finished_label">Close</string>
 </resources>

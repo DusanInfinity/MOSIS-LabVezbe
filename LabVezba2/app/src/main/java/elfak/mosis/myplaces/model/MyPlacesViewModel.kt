@@ -7,4 +7,5 @@ class MyPlacesViewModel :ViewModel() {
     fun addPlace(place: MyPlace){
         myPlacesList.add(place)
     }
+    var selected: MyPlace? = null
 }

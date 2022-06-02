@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -70,6 +71,7 @@ class EditFragment : Fragment() {
             addButton.setText(R.string.editmyplace_save_label)
             addButton.isEnabled = true
         }
+        else (requireActivity() as AppCompatActivity).supportActionBar?.title = "Add My Place"
         editName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 addButton.isEnabled = (editName.text.isNotEmpty())

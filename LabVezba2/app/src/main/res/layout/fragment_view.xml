@@ -31,6 +31,30 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Longitude:"/>
+
+    <TextView
+        android:id="@+id/viewmyplace_longitude_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Latitude:"/>
+
+    <TextView
+        android:id="@+id/viewmyplace_latitude_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
     <Button
         android:id="@+id/viewmyplace_finished_button"
         android:layout_width="fill_parent"

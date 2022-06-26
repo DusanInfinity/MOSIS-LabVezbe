@@ -87,6 +87,7 @@ class ListFragment : Fragment() {
                 menu?.add(0, 1, 1, "View place")
                 menu?.add(0, 2, 2, "Edit place")
                 menu?.add(0, 3, 3, "Delete place")
+                menu?.add(0, 4, 4, "Show on map")
             }
         })
     }
@@ -108,6 +109,9 @@ class ListFragment : Fragment() {
             myPlacesViewModel.myPlacesList.removeAt(info.position)
             val myPlacesList: ListView = requireView().findViewById<ListView>(R.id.my_places_list)
             myPlacesList.adapter = this@ListFragment.context?.let { ArrayAdapter<MyPlace>(it, android.R.layout.simple_list_item_1, myPlacesViewModel.myPlacesList)}
+        } else if (item.itemId == 4) {
+            myPlacesViewModel.selected = myPlacesViewModel.myPlacesList[info.position];
+            this.findNavController().navigate(R.id.action_ListFragment_to_MapFragment)
         }
 
         return super.onContextItemSelected(item)

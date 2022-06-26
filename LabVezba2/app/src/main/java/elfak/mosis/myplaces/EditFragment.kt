@@ -10,17 +10,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import elfak.mosis.myplaces.data.MyPlace
+import elfak.mosis.myplaces.model.LocationViewModel
 import elfak.mosis.myplaces.model.MyPlacesViewModel
 
 
 class EditFragment : Fragment() {
 
+    private val locationViewModel: LocationViewModel by activityViewModels()
     private val myPlacesViewModel: MyPlacesViewModel by activityViewModels()
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +64,15 @@ class EditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val editName: EditText = requireView().findViewById(R.id.editmyplace_name_edit)
         val editDesc: EditText = requireView().findViewById(R.id.editmyplace_desc_edit)
+
         val editLongitude: EditText = requireView().findViewById(R.id.editmyplace_longitude_edit)
+        val lonObserver = Observer<String> { newValue -> editLongitude.setText(newValue.toString())}
+        locationViewModel.longitude.observe(viewLifecycleOwner, lonObserver);
+
         val editLatitude: EditText = requireView().findViewById(R.id.editmyplace_latitude_edit)
+        val latObserver = Observer<String> { newValue -> editLatitude.setText(newValue.toString())}
+        locationViewModel.latitude.observe(viewLifecycleOwner, latObserver);
+
         if(myPlacesViewModel.selected!=null){
             editName.setText(myPlacesViewModel.selected?.name)
             editDesc.setText(myPlacesViewModel.selected?.description)
@@ -102,16 +109,26 @@ class EditFragment : Fragment() {
             else{
                 myPlacesViewModel.addPlace(MyPlace(name, desc, longitude, latitude))
             }
+            myPlacesViewModel.selected = null
+            locationViewModel.setLocation("", "")
             findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
+            //findNavController().popBackStack()
         }
         val cancelButton: Button = requireView().findViewById(R.id.editmyplace_cancel_button)
         cancelButton.setOnClickListener {
-            findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
+            myPlacesViewModel.selected = null
+            locationViewModel.setLocation("", "")
+            //findNavController().navigate(R.id.action_EditFragment_to_ListFragment)
+            findNavController().popBackStack()
+        }
+        val setButton: Button = requireView().findViewById<Button>(R.id.editmyplace_location_button)
+        setButton.setOnClickListener {
+            locationViewModel.setLocation = true;
+            findNavController().navigate(R.id.action_EditFragment_to_MapFragment)
         }
     }
 
     override fun onDestroyView() {
-        myPlacesViewModel.selected = null
         super.onDestroyView()
     }
 

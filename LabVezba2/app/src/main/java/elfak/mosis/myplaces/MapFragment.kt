@@ -9,16 +9,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.preference.PreferenceManager
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import elfak.mosis.myplaces.model.LocationViewModel
+import elfak.mosis.myplaces.model.MyPlacesViewModel
 import org.osmdroid.config.Configuration
+import org.osmdroid.events.MapEventsReceiver
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.MapEventsOverlay
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
 
 class MapFragment : Fragment() {
     lateinit var map: MapView
+    private val locationViewModel: LocationViewModel by activityViewModels()
+    private val myPlacesViewModel: MyPlacesViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +54,22 @@ class MapFragment : Fragment() {
             ActivityCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
             requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         else
-            setMyLocationOverlay();
+            setupMap()
+    }
 
+    private fun setupMap() {
+        var startpoint: GeoPoint = GeoPoint(43.3209, 21.8958)
         map.controller.setZoom(15.0);
-        val startpoint = GeoPoint(43.3209, 21.8958)
-        map.controller.setCenter(startpoint)
+        if(locationViewModel.setLocation)
+            setOnMapClickOverlay()
+        else
+        {
+            if(myPlacesViewModel.selected != null)
+                startpoint = GeoPoint(myPlacesViewModel.selected!!.latitude.toDouble(), myPlacesViewModel.selected!!.longitude.toDouble())
+            else
+                setMyLocationOverlay()
+        }
+        map.controller.animateTo(startpoint)
     }
 
     private fun setMyLocationOverlay() {
@@ -66,8 +84,28 @@ class MapFragment : Fragment() {
             isGranted: Boolean ->
             if(isGranted) {
                 setMyLocationOverlay();
+                setOnMapClickOverlay();
             }
         };
+
+    private fun setOnMapClickOverlay() {
+        var receive = object:MapEventsReceiver {
+            override fun singleTapConfirmedHelper(p: GeoPoint): Boolean {
+                var lon = p.longitude.toString()
+                var lat = p.latitude.toString()
+                locationViewModel.setLocation(lon, lat)
+                //findNavController().navigate(R.id.action_MapFragment_to_EditFragment)
+                findNavController().popBackStack()
+                return true
+            }
+
+            override fun longPressHelper(p: GeoPoint?): Boolean {
+                return false
+            }
+        }
+        var overlayEvents = MapEventsOverlay(receive)
+        map.overlays.add(overlayEvents)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
